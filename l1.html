@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <title>Anubhav & Neetu: Love Story ❤️</title> -->
+    <title>My Dear Love ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #e91e63;
+            --secondary-color: #f8bbd0;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fce4ec 0%, var(--secondary-color) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Lato', sans-serif;
+            overflow: hidden;
+            perspective: 1000px;
+            padding: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transform-style: preserve-3d;
+            transition: all 0.5s ease;
+            animation: cardWave 4s infinite alternate;
+            overflow: hidden;
+        }
+
+        .background-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            transform: rotate(45deg);
+            opacity: 0.2;
+            animation: floatHeart 5s infinite;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 50%;
+        }
+
+        .heart::before { left: -10px; }
+        .heart::after { top: -10px; }
+
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            color: var(--primary-color);
+            text-align: center;
+            font-size: 3em;
+            margin-bottom: 20px;
+            animation: textShimmer 3s infinite alternate;
+        }
+
+        .names {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 20px;
+        }
+
+        .names span {
+            color: var(--primary-color);
+            font-size: 1.5em;
+            animation: nameFloat 2s infinite alternate;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        p {
+            color: #424242;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s forwards;
+        }
+
+        p:nth-child(2) { animation-delay: 0.2s; }
+        p:nth-child(3) { animation-delay: 0.4s; }
+
+        .signature {
+            font-family: 'Great Vibes', cursive;
+            color: var(--primary-color);
+            margin-top: 30px;
+            font-size: 2em;
+            opacity: 0;
+            animation: fadeIn 1s forwards 1s;
+        }
+
+        @keyframes cardWave {
+            0% { transform: rotate(-2deg); }
+            100% { transform: rotate(2deg); }
+        }
+
+        @keyframes floatHeart {
+            0%, 100% { transform: rotate(45deg) translate(0, 0) scale(1); }
+            50% { transform: rotate(45deg) translate(0, -30px) scale(1.2); }
+        }
+
+        @keyframes textShimmer {
+            0% { text-shadow: 0 0 5px rgba(233, 30, 99, 0.3); }
+            100% { text-shadow: 0 0 15px rgba(233, 30, 99, 0.6); }
+        }
+
+        @keyframes nameFloat {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        @media (max-width: 600px) {
+            .card {
+                padding: 20px;
+                margin: 10px;
+                width: calc(100% - 20px);
+            }
+
+            h1 {
+                font-size: 2.5em;
+            }
+
+            .names {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .names span {
+                font-size: 1.2em;
+            }
+
+            p {
+                font-size: 0.9em;
+            }
+
+            .signature {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="background-hearts">
+            <div class="heart" style="top: 10%; left: 10%;"></div>
+            <div class="heart" style="top: 30%; right: 15%;"></div>
+            <div class="heart" style="bottom: 20%; left: 20%;"></div>
+            <div class="heart" style="bottom: 40%; right: 25%;"></div>
+        </div>
+        <div class="content">
+            <h1>Love Letter</h1>
+            
+            <div class="names">
+                <span>Anubhav</span>
+                <span>❤️</span>
+                <span>Neetu</span>
+            </div>
+            
+            <p> Dear Neetu, From the moment you entered my life, everything changed. The world became brighter, colors more vivid, and my heart found its home.</p>
+            
+            <p>Your smile is my sunrise, your laughter my favorite melody. The way you understand me, support me, and believe in me makes me want to be the best version of myself.</p>
+            
+            <p>I promise to stand by your side through all of life's storms and celebrations. You make my world complete in ways I never thought possible.</p>
+            
+            <div class="signature">
+                Forever Yours - Anubhav
+            </div>
+        </div>
+    </div>
+</body>
+</html>

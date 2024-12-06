@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dear Love ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #e91e63;
+            --secondary-color: #f8bbd0;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fce4ec 0%, var(--secondary-color) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Lato', sans-serif;
+            overflow: hidden;
+            perspective: 1000px;
+            padding: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transform-style: preserve-3d;
+            transition: all 0.5s ease;
+            animation: cardWave 4s infinite alternate;
+            overflow: hidden;
+        }
+
+        .background-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            transform: rotate(45deg);
+            opacity: 0.2;
+            animation: floatHeart 5s infinite;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 50%;
+        }
+
+        .heart::before { left: -10px; }
+        .heart::after { top: -10px; }
+
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            color: var(--primary-color);
+            text-align: center;
+            font-size: 3em;
+            margin-bottom: 20px;
+            animation: textShimmer 3s infinite alternate;
+        }
+
+        .names {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 20px;
+        }
+
+        .names span {
+            color: var(--primary-color);
+            font-size: 1.5em;
+            animation: nameFloat 2s infinite alternate;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        p {
+            color: #424242;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s forwards;
+        }
+
+        p:nth-child(2) { animation-delay: 0.2s; }
+        p:nth-child(3) { animation-delay: 0.4s; }
+
+        .signature {
+            font-family: 'Great Vibes', cursive;
+            color: var(--primary-color);
+            margin-top: 30px;
+            font-size: 2em;
+            opacity: 0;
+            animation: fadeIn 1s forwards 1s;
+        }
+
+        /* JS-related styles */
+        .js-heart {
+            position: fixed;
+            pointer-events: none;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            transform: rotate(45deg);
+            z-index: 9999;
+        }
+
+        .js-heart::before,
+        .js-heart::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 50%;
+        }
+
+        .js-heart::before { left: -10px; }
+        .js-heart::after { top: -10px; }
+
+        @keyframes cardWave { /* Previous keyframes */ }
+        @keyframes floatHeart { /* Previous keyframes */ }
+        @keyframes textShimmer { /* Previous keyframes */ }
+        @keyframes nameFloat { /* Previous keyframes */ }
+        @keyframes fadeInUp { /* Previous keyframes */ }
+        @keyframes fadeIn { /* Previous keyframes */ }
+
+        @media (max-width: 600px) {
+            /* Previous media query styles */
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="background-hearts">
+            <div class="heart" style="top: 10%; left: 10%;"></div>
+            <div class="heart" style="top: 30%; right: 15%;"></div>
+            <div class="heart" style="bottom: 20%; left: 20%;"></div>
+            <div class="heart" style="bottom: 40%; right: 25%;"></div>
+        </div>
+        <div class="content">
+            <h1>Love Letter</h1>
+            
+            <div class="names">
+                <span>Anubhav</span>
+                <span>❤️</span>
+                <span>Neetu</span>
+            </div>
+            
+            <p>Dear Neetu, From the moment you entered my life, everything changed. The world became brighter, colors more vivid, and my heart found its home.</p>
+            
+            <p>Your smile is my sunrise, your laughter my favorite melody. The way you understand me, support me, and believe in me makes me want to be the best version of myself.</p>
+            
+            <p>I promise to stand by your side through all of life's storms and celebrations. You make my world complete in ways I never thought possible.</p>
+            
+            <div class="signature">
+                Forever Yours - Anubhav
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Interactive Heart Explosion on Click
+            document.querySelector('.card').addEventListener('click', createHeartExplosion);
+
+            // Mouse Move Heart Trail
+            document.addEventListener('mousemove', createHeartTrail);
+
+            function createHeartExplosion(event) {
+                const heartCount = 20;
+                for (let i = 0; i < heartCount; i++) {
+                    const heart = document.createElement('div');
+                    heart.classList.add('js-heart');
+                    document.body.appendChild(heart);
+
+                    // Random starting point
+                    heart.style.left = `${event.clientX}px`;
+                    heart.style.top = `${event.clientY}px`;
+
+                    // Random explosion direction
+                    const angle = Math.random() * Math.PI * 2;
+                    const distance = Math.random() * 200;
+                    const duration = Math.random() * 1000 + 1000;
+
+                    heart.animate([
+                        { 
+                            transform: `rotate(45deg) translate(0, 0)`,
+                            opacity: 1
+                        },
+                        { 
+                            transform: `rotate(45deg) translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px)`,
+                            opacity: 0
+                        }
+                    ], {
+                        duration: duration,
+                        easing: 'cubic-bezier(0.25, 0.1, 0.25, 1)'
+                    }).onfinish = () => {
+                        heart.remove();
+                    };
+                }
+            }
+
+            function createHeartTrail(event) {
+                const heart = document.createElement('div');
+                heart.classList.add('js-heart');
+                document.body.appendChild(heart);
+
+                heart.style.left = `${event.clientX}px`;
+                heart.style.top = `${event.clientY}px`;
+
+                heart.animate([
+                    { 
+                        transform: 'rotate(45deg) scale(1)',
+                        opacity: 0.5
+                    },
+                    { 
+                        transform: 'rotate(45deg) scale(0)',
+                        opacity: 0
+                    }
+                ], {
+                    duration: 1000,
+                    easing: 'ease-out'
+                }).onfinish = () => {
+                    heart.remove();
+                };
+            }
+        });
+    </script>
+</body>
+</html>
