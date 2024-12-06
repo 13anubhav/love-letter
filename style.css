@@ -191,7 +191,7 @@ p {
 .music-button {
 position: fixed;
 left: 50%;
-bottom: 131px;
+bottom: 107px;
 transform: translateX(-50%);
 background: var(--primary-color);
 color: white;
